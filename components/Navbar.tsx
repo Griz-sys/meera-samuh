@@ -20,15 +20,17 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header
-      className="fixed top-0 left-0 right-0 z-50"
-      style={{
-        background: "rgba(250,250,248,0.94)",
-        backdropFilter: "blur(12px)",
-        borderBottom: "1px solid var(--border)",
-      }}
-    >
-      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-[72px]">
+    <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-4">
+      <div
+        className="max-w-6xl mx-auto px-6 flex items-center justify-between h-[72px]"
+        style={{
+          background: "rgba(255,255,255,0.96)",
+          backdropFilter: "blur(16px)",
+          borderRadius: 16,
+          boxShadow: "0 4px 24px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04)",
+          border: "1px solid var(--border)",
+        }}
+      >
         <Link href="/" className="shrink-0">
           <Image
             src="/ms-logo-261x118.png"
@@ -36,7 +38,7 @@ export default function Navbar() {
             width={120}
             height={54}
             priority
-            style={{ height: 74, width: "auto" }}
+            style={{ height: 58, width: "auto", marginLeft: "-8px" }}
           />
         </Link>
 
@@ -70,8 +72,14 @@ export default function Navbar() {
       {/* Mobile drawer */}
       {open && (
         <div
-          className="lg:hidden px-6 pb-8 pt-4 flex flex-col gap-5"
-          style={{ background: "var(--background)", borderTop: "1px solid var(--border)" }}
+          className="lg:hidden px-6 pb-8 pt-4 flex flex-col gap-5 mt-2"
+          style={{
+            background: "rgba(255,255,255,0.97)",
+            backdropFilter: "blur(16px)",
+            borderRadius: 24,
+            boxShadow: "0 4px 24px rgba(0,0,0,0.08)",
+            border: "1px solid var(--border)",
+          }}
         >
           {links.map((l) => (
             <Link

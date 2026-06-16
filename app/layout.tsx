@@ -37,7 +37,7 @@ export default function RootLayout({
     <html lang="en" className={`${playfair.variable} ${sourceSans.variable} ${ibmPlexMono.variable}`}>
       <body className="min-h-screen flex flex-col">
         <Navbar />
-        <main className="flex-1 pt-[72px]">{children}</main>
+        <main className="flex-1 pt-[100px]">{children}</main>
         <Footer />
       </body>
     </html>
