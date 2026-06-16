@@ -33,7 +33,7 @@ const brands = [
     name: "GMS Corporate Services",
     tagline: "Corporate Solutions",
     year: "Est. 2023",
-    logo: null,
+    logo: "/GMS-logo.svg",
     href: "https://www.gmscorporateservices.com/",
     description:
       "End-to-end corporate services covering compliance, secretarial, taxation, and business setup — helping organisations operate with confidence across India.",
