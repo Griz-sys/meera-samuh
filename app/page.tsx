@@ -1,11 +1,12 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import SoftAurora from "@/components/SoftAurora";
 
 const stats = [
   { value: "16+", label: "Years of Experience" },
   { value: "50+", label: "Countries Served" },
-  { value: "2", label: "Business Verticals" },
+  { value: "3", label: "Business Verticals" },
   { value: "500+", label: "Corporate Clients" },
 ];
 
@@ -14,6 +15,8 @@ const brands = [
     name: "Expatria",
     tagline: "Mobility Redefined",
     year: "Est. 2015",
+    logo: "/expatria.png",
+    href: "https://expatria.in/",
     description:
       "Comprehensive relocation and fleet management services for expats and foreign nationals settling in India. From visa facilitation to FRRO compliance and beyond.",
   },
@@ -21,8 +24,19 @@ const brands = [
     name: "EMS",
     tagline: "Business Redefined",
     year: "Est. 2020",
+    logo: "/ems.png",
+    href: "https://emsinfo.in/",
     description:
       "Eminence Management Solutions — manpower and HR services for automobile, manufacturing, logistics, technical, and various other industries.",
+  },
+  {
+    name: "GMS Corporate Services",
+    tagline: "Corporate Solutions",
+    year: "Est. 2023",
+    logo: null,
+    href: "https://www.gmscorporateservices.com/",
+    description:
+      "End-to-end corporate services covering compliance, secretarial, taxation, and business setup — helping organisations operate with confidence across India.",
   },
 ];
 
@@ -148,7 +162,7 @@ export default function Home() {
               <span className="label">Our Portfolio</span>
             </div>
             <h2 className="serif" style={{ fontSize: "clamp(2rem, 4vw, 2.8rem)", fontWeight: 400 }}>
-              Two Brands. One Vision.
+              Three Brands. One Vision.
             </h2>
             <p className="mt-4 mx-auto" style={{ maxWidth: 480, color: "var(--muted-foreground)" }}>
               Each brand is purpose-built to solve a distinct challenge — together
@@ -156,28 +170,45 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8">
             {brands.map((b, i) => (
-              <div
+              <a
                 key={b.name}
-                className="card card-accent-top p-8"
-                style={{ animationDelay: `${i * 100}ms` }}
+                href={b.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card card-accent-top p-8 block"
+                style={{ animationDelay: `${i * 100}ms`, textDecoration: "none" }}
               >
-                <div className="label mb-4" style={{ color: "var(--muted-foreground)" }}>{b.year}</div>
-                <h3
-                  className="serif mb-1"
-                  style={{ fontSize: "1.6rem", fontWeight: 600, color: "var(--foreground)" }}
-                >
-                  {b.name}
-                </h3>
-                <p className="mb-5" style={{ fontSize: "0.8rem", color: "var(--accent)", letterSpacing: "0.06em", fontStyle: "italic" }}>
+                {/* Logo or name */}
+                <div className="mb-5 h-14 flex items-center">
+                  {b.logo ? (
+                    <Image
+                      src={b.logo}
+                      alt={b.name}
+                      width={160}
+                      height={56}
+                      style={{ height: 48, width: "auto", objectFit: "contain", objectPosition: "left" }}
+                    />
+                  ) : (
+                    <span className="serif font-semibold" style={{ fontSize: "1.15rem", color: "var(--foreground)" }}>
+                      {b.name}
+                    </span>
+                  )}
+                </div>
+                <div className="label mb-3" style={{ color: "var(--muted-foreground)" }}>{b.year}</div>
+                <p className="mb-4" style={{ fontSize: "0.8rem", color: "var(--accent)", letterSpacing: "0.06em", fontStyle: "italic" }}>
                   {b.tagline}
                 </p>
-                <hr className="rule mb-5" />
+                <hr className="rule mb-4" />
                 <p style={{ fontSize: "0.9rem", lineHeight: 1.7, color: "var(--muted-foreground)" }}>
                   {b.description}
                 </p>
-              </div>
+                <div className="mt-5 flex items-center gap-1" style={{ fontSize: "0.75rem", color: "var(--accent)" }}>
+                  <span>Visit site</span>
+                  <ExternalLink size={11} />
+                </div>
+              </a>
             ))}
           </div>
         </div>

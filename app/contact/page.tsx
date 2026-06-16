@@ -11,8 +11,9 @@ const contactDetails = [
 ];
 
 const brandEnquiries = [
-  { name: "Expatria", sub: "Relocation & Mobility" },
-  { name: "EMS", sub: "Manpower & HR" },
+  { name: "Expatria", sub: "Relocation & Mobility", href: "https://expatria.in/" },
+  { name: "EMS", sub: "Manpower & HR", href: "https://emsinfo.in/" },
+  { name: "GMS Corporate Services", sub: "Corporate Solutions", href: "https://www.gmscorporateservices.com/" },
 ];
 
 export default function ContactPage() {
@@ -109,7 +110,9 @@ export default function ContactPage() {
                       <p style={{ fontSize: "0.75rem", color: "var(--muted-foreground)" }}>{b.sub}</p>
                     </div>
                     <a
-                      href="mailto:info@meerasamuh.com"
+                      href={b.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="label transition-colors hover:text-[var(--accent)]"
                       style={{
                         fontSize: "0.6rem",

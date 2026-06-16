@@ -27,14 +27,15 @@ export default function Footer() {
             {/* Brands */}
             <div className="flex flex-col gap-3">
               {[
-                { name: "Expatria", sub: "Mobility Redefined" },
-                { name: "EMS", sub: "Business Redefined" },
+                { name: "Expatria", sub: "Mobility Redefined", href: "https://expatria.in/" },
+                { name: "EMS", sub: "Business Redefined", href: "https://emsinfo.in/" },
+                { name: "GMS Corporate Services", sub: "Corporate Solutions", href: "https://www.gmscorporateservices.com/" },
               ].map((b) => (
-                <div key={b.name} className="flex items-baseline gap-2">
+                <a key={b.name} href={b.href} target="_blank" rel="noopener noreferrer" className="flex items-baseline gap-2" style={{ textDecoration: "none" }}>
                   <span className="serif font-semibold text-sm" style={{ color: "var(--accent)" }}>{b.name}</span>
                   <span className="rule flex-1" style={{ maxWidth: 32, display: "inline-block", verticalAlign: "middle", position: "relative", top: -1 }} />
                   <span className="text-xs" style={{ color: "var(--muted-foreground)" }}>{b.sub}</span>
-                </div>
+                </a>
               ))}
             </div>
           </div>
