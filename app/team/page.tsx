@@ -1,11 +1,47 @@
-import { Users, ImageIcon, Mail, Share2 } from "lucide-react";
+"use client";
+import { ExternalLink } from "lucide-react";
+import Image from "next/image";
 
-const departments = ["Leadership", "Global Mobility", "HR & Manpower", "Operations", "Business Development"];
+const leaders = [
+  {
+    name: "Gaurav Manav",
+    role: "Co-Founder & CEO",
+    linkedin: "https://www.linkedin.com/in/gaurav-manav-meerasamuh/",
+    photo: "/team-gaurav.jfif",
+    initials: "GM",
+    bio: "Visionary leader driving Meera Samuh's growth across global mobility, HR, and corporate services. With over 16 years of industry experience, Gaurav has built a group trusted by corporates and expats across 50+ countries.",
+  },
+  {
+    name: "Arokia Manav",
+    role: "Co-Founder & MD",
+    linkedin: "https://www.linkedin.com/in/arokia-manav-552b45190/",
+    photo: "/team-arokia.jfif",
+    initials: "AM",
+    bio: "Instrumental in shaping the strategic direction and operational backbone of Meera Samuh. Arokia brings deep expertise in business development and cross-border corporate solutions to every client engagement.",
+  },
+  {
+    name: "Sushma Singh",
+    role: "COO",
+    linkedin: "https://www.linkedin.com/in/sushma-singh-83750b1a9/",
+    photo: "/team-sushma.jfif",
+    initials: "SS",
+    bio: "The operational force behind Meera Samuh's seamless service delivery. Sushma oversees day-to-day operations across all three brands, ensuring every client experience meets the group's high standards of excellence.",
+  },
+];
 
 const culture = [
-  { title: "Collaborative", desc: "We work as one unit across both brands, sharing knowledge and resources to deliver seamless client experiences." },
-  { title: "Client-First", desc: "Every decision is guided by what delivers the most value to our clients — whether they are expats, employees, or corporations." },
-  { title: "Always Growing", desc: "From entering new verticals to upskilling our team, we are constantly pushing to be better at what we do." },
+  {
+    title: "Collaborative",
+    desc: "We work as one unit across both brands, sharing knowledge and resources to deliver seamless client experiences.",
+  },
+  {
+    title: "Client-First",
+    desc: "Every decision is guided by what delivers the most value to our clients — whether they are expats, employees, or corporations.",
+  },
+  {
+    title: "Always Growing",
+    desc: "From entering new verticals to upskilling our team, we are constantly pushing to be better at what we do.",
+  },
 ];
 
 export default function TeamPage() {
@@ -14,123 +50,145 @@ export default function TeamPage() {
 
       {/* ── Hero ── */}
       <section
-        className="py-32 md:py-40 px-6 text-center"
-        style={{ borderBottom: "1px solid var(--border)" }}
+        className="px-6"
+        style={{
+          paddingTop: "10rem",
+          paddingBottom: "5rem",
+          borderBottom: "1px solid var(--border)",
+        }}
       >
-        <div className="max-w-3xl mx-auto">
-          <div className="label-rule mb-6 max-w-xs mx-auto">
-            <span className="label">The People Behind the Brand</span>
-          </div>
-          <h1
-            className="serif mb-6"
-            style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 400, lineHeight: 1.1, letterSpacing: "-0.02em" }}
-          >
-            Meet the <span style={{ fontStyle: "italic", color: "var(--accent)" }}>Team</span>
-          </h1>
-          <p style={{ fontSize: "1.1rem", color: "var(--muted-foreground)", lineHeight: 1.75, maxWidth: 480, margin: "0 auto" }}>
-            Our strength lies in our people — experienced professionals dedicated to
-            delivering excellence in global mobility, HR, and business solutions.
-          </p>
-        </div>
-      </section>
-
-      {/* ── Department Filter ── */}
-      <section
-        className="py-8 px-6"
-        style={{ background: "var(--card)", borderBottom: "1px solid var(--border)" }}
-      >
-        <div className="max-w-5xl mx-auto flex flex-wrap gap-3 justify-center">
-          {departments.map((d, i) => (
-            <span
-              key={d}
-              className="label cursor-default"
-              style={{
-                padding: "7px 18px",
-                background: i === 0 ? "var(--accent)" : "transparent",
-                border: `1px solid ${i === 0 ? "var(--accent)" : "var(--border)"}`,
-                borderRadius: 4,
-                color: i === 0 ? "#fff" : "var(--muted-foreground)",
-                fontSize: "0.65rem",
-              }}
+        <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "3rem" }}>
+          <div>
+            <div className="label" style={{ marginBottom: "1rem" }}>The People Behind the Brand</div>
+            <h1
+              className="serif"
+              style={{ fontSize: "clamp(2.8rem, 6vw, 5rem)", fontWeight: 400, lineHeight: 1.05, letterSpacing: "-0.02em" }}
             >
-              {d}
-            </span>
-          ))}
+              Meet the{" "}
+              <span style={{ fontStyle: "italic", color: "var(--accent)" }}>Team</span>
+            </h1>
+          </div>
+          <p style={{ maxWidth: 340, fontSize: "1rem", color: "var(--muted-foreground)", lineHeight: 1.8, flexShrink: 0 }}>
+            Our strength lies in our people — experienced professionals dedicated to delivering excellence in global mobility, HR, and business solutions.
+          </p>
         </div>
       </section>
 
-      {/* ── Team Grid ── */}
-      <section className="py-20 px-6 max-w-5xl mx-auto">
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {Array.from({ length: 8 }).map((_, i) => (
-            <div key={i} className="card p-6 text-center">
-              {/* Avatar */}
+      {/* ── Leadership ── */}
+      <section style={{ borderBottom: "1px solid var(--border)" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto", padding: "5rem 1.5rem" }}>
+          <div className="label" style={{ marginBottom: "3rem" }}>Leadership</div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
+            {leaders.map((p) => (
               <div
-                className="w-20 h-20 rounded-full mx-auto mb-5 flex items-center justify-center"
-                style={{ background: "var(--muted)", border: "2px dashed var(--border)" }}
+                key={p.name}
+                style={{
+                  background: "var(--card)",
+                  border: "1px solid var(--border)",
+                  borderRadius: 16,
+                  overflow: "hidden",
+                  display: "flex",
+                  flexDirection: "column",
+                  transition: "box-shadow 300ms ease-out, border-color 300ms ease-out",
+                }}
               >
-                <ImageIcon size={20} style={{ color: "var(--border-hover)" }} />
-              </div>
-              {/* Name */}
-              <div className="h-3.5 rounded mx-auto mb-2" style={{ background: "var(--muted)", width: "65%" }} />
-              {/* Role */}
-              <div className="h-2.5 rounded mx-auto mb-5" style={{ background: "var(--muted)", width: "45%" }} />
-              {/* Social */}
-              <div className="flex justify-center gap-2">
-                {[Share2, Mail].map((Icon, j) => (
-                  <div
-                    key={j}
-                    className="w-8 h-8 rounded flex items-center justify-center"
-                    style={{ background: "var(--muted)", border: "1px dashed var(--border)" }}
-                  >
-                    <Icon size={12} style={{ color: "var(--border-hover)" }} />
+                {/* Photo */}
+                <div style={{ position: "relative", width: "100%", aspectRatio: "4/3", background: "var(--muted)", overflow: "hidden" }}>
+                  <Image
+                    src={p.photo}
+                    alt={p.name}
+                    fill
+                    unoptimized
+                    style={{ objectFit: "cover", objectPosition: "center top", zIndex: 1 }}
+                  />
+                  {/* Initials fallback — shown beneath image via z-index; if image loads it covers this */}
+                  <div style={{
+                    position: "absolute", inset: 0, display: "flex", alignItems: "center",
+                    justifyContent: "center", zIndex: 0,
+                    background: "linear-gradient(135deg, #f5f0e8 0%, #ede8df 100%)",
+                  }}>
+                    <span className="serif" style={{ fontSize: "3.5rem", fontWeight: 400, color: "var(--accent)", fontStyle: "italic", opacity: 0.5 }}>
+                      {p.initials}
+                    </span>
                   </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+                </div>
 
-      {/* ── Placeholder ── */}
-      <section className="pb-16 px-6 max-w-5xl mx-auto">
-        <div className="placeholder-block p-14 text-center">
-          <Users size={28} style={{ color: "var(--border-hover)" }} />
-          <p className="serif mt-3" style={{ fontSize: "1.05rem", fontStyle: "italic", color: "var(--muted-foreground)" }}>
-            Team Profiles Coming Soon
-          </p>
-          <p style={{ fontSize: "0.85rem", color: "var(--border-hover)", marginTop: 6, maxWidth: 320 }}>
-            Add team member names, photos, roles, and bios here. Supports up to 4 columns and department filtering.
-          </p>
+                {/* Content */}
+                <div style={{ padding: "1.75rem 2rem", flex: 1, display: "flex", flexDirection: "column" }}>
+                  <div style={{ marginBottom: "0.25rem" }}>
+                    <span className="label" style={{ color: "var(--accent)", fontSize: "0.65rem" }}>{p.role}</span>
+                  </div>
+                  <h3 className="serif" style={{ fontSize: "1.4rem", fontWeight: 400, color: "var(--foreground)", marginBottom: "1rem", lineHeight: 1.2 }}>
+                    {p.name}
+                  </h3>
+                  <hr className="rule" style={{ marginBottom: "1rem" }} />
+                  <p style={{ fontSize: "0.875rem", lineHeight: 1.8, color: "var(--muted-foreground)", flex: 1 }}>
+                    {p.bio}
+                  </p>
+                </div>
+
+                {/* Footer */}
+                <a
+                  href={p.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "flex", alignItems: "center", justifyContent: "space-between",
+                    padding: "1.1rem 2rem",
+                    borderTop: "1px solid var(--border)",
+                    textDecoration: "none",
+                    transition: "background 200ms ease-out",
+                    background: "transparent",
+                  }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "var(--muted)"; }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "transparent"; }}
+                >
+                  <span style={{ fontSize: "0.78rem", fontWeight: 700, color: "var(--accent)", letterSpacing: "0.04em" }}>
+                    View on LinkedIn
+                  </span>
+                  <ExternalLink size={15} color="var(--accent)" />
+                </a>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ── Culture ── */}
       <section
-        className="py-28 px-6"
-        style={{ background: "var(--muted)", borderTop: "1px solid var(--border)" }}
+        className="px-6"
+        style={{ background: "var(--muted)", borderTop: "1px solid var(--border)", padding: "5rem 1.5rem" }}
       >
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-14">
-            <div className="label-rule mb-5 max-w-xs mx-auto">
-              <span className="label">Life at Meera Samuh</span>
-            </div>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <div style={{ marginBottom: "3.5rem" }}>
+            <div className="label" style={{ marginBottom: "0.6rem" }}>Life at Meera Samuh</div>
             <h2 className="serif" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 400 }}>
               Our Culture
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {culture.map((c) => (
-              <div key={c.title} className="card card-accent-top p-8">
-                <h4
-                  className="serif mb-3"
-                  style={{ fontSize: "1.25rem", fontWeight: 600, fontStyle: "italic", color: "var(--accent)" }}
-                >
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
+            {culture.map((c, i) => (
+              <div key={c.title} style={{
+                background: "var(--card)",
+                border: "1px solid var(--border)",
+                borderTop: "3px solid var(--accent)",
+                borderRadius: 12,
+                padding: "2.25rem",
+              }}>
+                <div style={{
+                  fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.14em",
+                  color: "var(--accent)", fontFamily: "var(--font-ibm-plex-mono)",
+                  textTransform: "uppercase", marginBottom: "1rem",
+                }}>
+                  0{i + 1}
+                </div>
+                <h4 className="serif" style={{ fontSize: "1.3rem", fontWeight: 400, fontStyle: "italic", color: "var(--foreground)", marginBottom: "1rem" }}>
                   {c.title}
                 </h4>
-                <hr className="rule mb-4" />
-                <p style={{ fontSize: "0.9rem", lineHeight: 1.75, color: "var(--muted-foreground)" }}>
+                <hr className="rule" style={{ marginBottom: "1rem" }} />
+                <p style={{ fontSize: "0.88rem", lineHeight: 1.8, color: "var(--muted-foreground)" }}>
                   {c.desc}
                 </p>
               </div>

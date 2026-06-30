@@ -1,13 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, ExternalLink } from "lucide-react";
-import SoftAurora from "@/components/SoftAurora";
 
 const stats = [
   { value: "16+", label: "Years of Experience" },
   { value: "50+", label: "Countries Served" },
-  { value: "3", label: "Business Verticals" },
-  { value: "500+", label: "Corporate Clients" },
+  { value: "3",   label: "Business Verticals" },
+  { value: "500+",label: "Corporate Clients" },
 ];
 
 const brands = [
@@ -41,11 +42,19 @@ const brands = [
 ];
 
 const services = [
-  { title: "FRRO & Visa Services", desc: "End-to-end visa processing, FRRO registration, and immigration compliance for expats and foreign nationals." },
-  { title: "Relocation Services", desc: "Complete relocation packages including home search, school search, settling-in support, and departure services." },
-  { title: "Fleet Management", desc: "Dedicated fleet solutions under the Expatria brand — reliable, professional, and tailored for corporate needs." },
-  { title: "Manpower Solutions", desc: "Talent acquisition and workforce management across automotive, manufacturing, logistics, and technical sectors." },
-  { title: "Corporate Consulting", desc: "Flexible, innovative corporate support designed to help companies establish and grow their operations in India." },
+  { title: "FRRO & Visa Services",  desc: "End-to-end visa processing, FRRO registration, and immigration compliance for expats and foreign nationals.", image: "/visa.png" },
+  { title: "Relocation Services",   desc: "Complete relocation packages including home search, school search, settling-in support, and departure services.", image: "/relocation.png" },
+  { title: "Fleet Management",      desc: "Dedicated fleet solutions under the Expatria brand — reliable, professional, and tailored for corporate needs.", image: "/fleet.png" },
+  { title: "Manpower Solutions",    desc: "Talent acquisition and workforce management across automotive, manufacturing, logistics, and technical sectors.", image: "/manpower.png" },
+  { title: "Corporate Consulting",  desc: "Flexible, innovative corporate support designed to help companies establish and grow their operations in India.", image: "/corporate consulting.png" },
+];
+
+const tickerItems = [
+  "FRRO & Visa Services",
+  "Relocation Services",
+  "Fleet Management",
+  "Manpower Solutions",
+  "Corporate Consulting",
 ];
 
 export default function Home() {
@@ -54,194 +63,240 @@ export default function Home() {
 
       {/* ── Hero ─────────────────────────────────────── */}
       <section
-        className="py-36 md:py-44 px-6 text-center"
-        style={{ borderBottom: "1px solid var(--border)", position: "relative", overflow: "hidden" }}
+        style={{
+          position: "relative",
+          marginTop: "72px",
+          marginLeft: "32px",
+          marginRight: "32px",
+          marginBottom: "0",
+          borderRadius: 20,
+          overflow: "hidden",
+          minHeight: "85vh",
+          boxShadow: "0 25px 70px rgba(0,0,0,0.12)",
+        }}
       >
-        {/* Aurora background */}
-        <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0 }}>
-          <SoftAurora
-            speed={0.6}
-            scale={1.5}
-            brightness={1}
-            color1="#f8d57e"
-            color2="#e29733"
-            noiseFrequency={2.5}
-            noiseAmplitude={1}
-            bandHeight={0.5}
-            bandSpread={1}
-            octaveDecay={0.1}
-            layerOffset={0}
-            colorSpeed={1}
-            enableMouseInteraction
-            mouseInfluence={0.25}
-          />
-        </div>
+        <video
+          autoPlay muted loop playsInline
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }}
+        >
+          <source src="/A_cinematic_second_seamless.mp4" type="video/mp4" />
+        </video>
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(0,0,0,0.52) 0%, rgba(0,0,0,0.28) 55%, rgba(0,0,0,0.18) 100%)", zIndex: 1 }} />
 
-        <div className="relative max-w-5xl mx-auto" style={{ zIndex: 1 }}>
-          {/* Label */}
-          <div className="label-rule mb-8 max-w-xs mx-auto">
-            <span className="label">Since 2008 · 50+ Countries</span>
+        <div
+          style={{
+            position: "absolute", inset: 0, zIndex: 2,
+            display: "flex", alignItems: "flex-start", justifyContent: "space-between",
+            padding: "3.5rem 4.5rem", gap: "2rem",
+          }}
+        >
+          {/* Left — badge + heading */}
+          <div style={{ animation: "slideInLeft 0.9s ease-out" }}>
+            <div style={{ marginBottom: "1.5rem" }}>
+              <span style={{
+                display: "inline-block", padding: "7px 18px",
+                background: "rgba(226,151,51,0.18)", border: "1px solid rgba(226,151,51,0.4)",
+                borderRadius: 999, color: "#E29733", fontSize: "0.72rem", fontWeight: 700,
+                letterSpacing: "0.13em", textTransform: "uppercase",
+              }}>
+                Since 2008 · 50+ Countries
+              </span>
+            </div>
+            <h1 className="serif" style={{
+              fontSize: "clamp(3rem, 7vw, 5rem)", fontWeight: 700, lineHeight: 1.05,
+              letterSpacing: "-0.02em", color: "white", textShadow: "0 2px 20px rgba(0,0,0,0.4)", maxWidth: 520,
+            }}>
+              We Help You<br />Grow Better
+            </h1>
           </div>
 
-          <h1
-            className="serif mb-8"
-            style={{
-              fontSize: "clamp(2.8rem, 7vw, 5.5rem)",
-              fontWeight: 400,
-              lineHeight: 1.08,
-              letterSpacing: "-0.02em",
-              color: "var(--foreground)",
-            }}
-          >
-            We Help You<br />
-            <span style={{ color: "var(--accent)", fontStyle: "italic" }}>Grow Better</span>
-          </h1>
-
-          <p
-            className="mx-auto mb-12"
-            style={{
-              maxWidth: 520,
-              fontSize: "1.125rem",
-              lineHeight: 1.75,
-              color: "var(--muted-foreground)",
-            }}
-          >
-            End-to-end Global Mobility, HR, and Business Solutions for corporates
-            and expats — delivered by a group trusted across more than 50 countries.
-          </p>
-
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link href="/about" className="btn-primary">
-              Discover Our Story <ArrowRight size={15} />
-            </Link>
-            <Link href="/contact" className="btn-outline">
-              Get in Touch
+          {/* Right — description + CTA */}
+          <div style={{ maxWidth: 320, flexShrink: 0, animation: "slideInRight 0.9s ease-out", marginTop: "auto" }}>
+            <p style={{ fontSize: "0.95rem", lineHeight: 1.8, color: "rgba(255,255,255,0.88)", marginBottom: "2rem" }}>
+              End-to-end Global Mobility, HR, and Business Solutions for corporates and expats — delivered by a group trusted across more than 50 countries.
+            </p>
+            <Link
+              href="/about"
+              style={{
+                display: "inline-flex", alignItems: "center", gap: "0.5rem",
+                padding: "13px 28px", background: "rgba(255,255,255,0.15)",
+                border: "1px solid rgba(255,255,255,0.35)", borderRadius: 8,
+                color: "white", fontSize: "0.9rem", fontWeight: 600, textDecoration: "none",
+                backdropFilter: "blur(8px)", transition: "background 200ms ease-out",
+              }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.25)"; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.15)"; }}
+            >
+              Discover Our Story
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ── Stats ────────────────────────────────────── */}
-      <section style={{ background: "var(--card)", borderBottom: "1px solid var(--border)" }}>
+      {/* ── Our Brands ───────────────────────────────── */}
+      <section style={{ background: "var(--background)", borderBottom: "1px solid var(--border)" }}>
+        {/* Section header */}
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "5rem 2.5rem 3rem" }}>
+          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", paddingBottom: "2rem", borderBottom: "1px solid var(--border)" }}>
+            <div>
+              <div className="label" style={{ marginBottom: "0.6rem" }}>Our Portfolio</div>
+              <h2 className="serif" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 400, lineHeight: 1.1 }}>
+                Three Brands.<br />One Vision.
+              </h2>
+            </div>
+            <p style={{ maxWidth: 320, color: "var(--muted-foreground)", fontSize: "0.92rem", lineHeight: 1.8, textAlign: "right" }}>
+              Each brand is purpose-built to solve a distinct challenge — together they form a comprehensive corporate solutions group.
+            </p>
+          </div>
+        </div>
+
+        {/* Brand cards */}
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 2.5rem 5rem", display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
+          {brands.map((b, i) => (
+            <a
+              key={b.name}
+              href={b.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group"
+              style={{
+                textDecoration: "none",
+                display: "flex",
+                flexDirection: "column",
+                background: "var(--card)",
+                border: "1px solid var(--border)",
+                borderRadius: 16,
+                overflow: "hidden",
+                transition: "box-shadow 300ms ease-out, border-color 300ms ease-out",
+              }}
+            >
+              {/* Top accent strip */}
+              <div style={{ height: 3, background: "var(--accent)", opacity: 0.85 }} />
+
+              {/* Logo area */}
+              <div style={{
+                padding: "2.5rem 2.5rem 2rem",
+                borderBottom: "1px solid var(--border)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}>
+                <div style={{ height: 52, display: "flex", alignItems: "center" }}>
+                  {b.logo ? (
+                    <Image src={b.logo} alt={b.name} width={160} height={52}
+                      style={{ height: 48, width: "auto", objectFit: "contain", objectPosition: "left" }}
+                    />
+                  ) : (
+                    <span className="serif" style={{ fontSize: "1.2rem", fontWeight: 600, color: "var(--foreground)" }}>{b.name}</span>
+                  )}
+                </div>
+                <span style={{
+                  fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.12em",
+                  color: "var(--muted-foreground)", fontFamily: "var(--font-ibm-plex-mono)",
+                  textTransform: "uppercase",
+                }}>{b.year}</span>
+              </div>
+
+              {/* Body */}
+              <div style={{ padding: "2rem 2.5rem", flex: 1, display: "flex", flexDirection: "column" }}>
+                <p className="serif" style={{
+                  fontSize: "1.25rem", fontWeight: 400, fontStyle: "italic",
+                  color: "var(--accent)", marginBottom: "1.25rem", lineHeight: 1.3,
+                }}>
+                  "{b.tagline}"
+                </p>
+                <p style={{ fontSize: "0.88rem", lineHeight: 1.8, color: "var(--muted-foreground)", flex: 1 }}>
+                  {b.description}
+                </p>
+              </div>
+
+              {/* Footer */}
+              <div style={{
+                padding: "1.25rem 2.5rem",
+                borderTop: "1px solid var(--border)",
+                display: "flex", alignItems: "center", justifyContent: "space-between",
+              }}>
+                <span style={{ fontSize: "0.8rem", fontWeight: 700, color: "var(--accent)", letterSpacing: "0.03em" }}>
+                  Visit site
+                </span>
+                <div style={{
+                  width: 32, height: 32, borderRadius: "50%",
+                  background: "var(--muted)", display: "flex", alignItems: "center", justifyContent: "center",
+                  transition: "background 200ms ease-out",
+                }}>
+                  <ExternalLink size={13} color="var(--accent)" />
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Stats strip ──────────────────────────────── */}
+      <section style={{ background: "var(--card)", borderBottom: "1px solid var(--border)", borderTop: "1px solid var(--border)" }}>
         <div className="max-w-5xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4">
             {stats.map((s, i) => (
-              <div
-                key={s.label}
-                className="py-12 px-6 text-center"
-                style={{
-                  borderRight: i < stats.length - 1 ? "1px solid var(--border)" : "none",
-                }}
-              >
-                <div
-                  className="serif mb-2"
-                  style={{
-                    fontSize: "3rem",
-                    fontWeight: 400,
-                    color: "var(--accent)",
-                    lineHeight: 1,
-                    fontStyle: "italic",
-                  }}
-                >
+              <div key={s.label} className="py-10 px-6 text-center" style={{ borderRight: i < stats.length - 1 ? "1px solid var(--border)" : "none" }}>
+                <div className="serif mb-1" style={{ fontSize: "2.6rem", fontWeight: 400, color: "var(--accent)", lineHeight: 1, fontStyle: "italic" }}>
                   {s.value}
                 </div>
-                <div className="label" style={{ color: "var(--muted-foreground)" }}>
-                  {s.label}
-                </div>
+                <div className="label" style={{ color: "var(--muted-foreground)" }}>{s.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── Our Brands ───────────────────────────────── */}
-      <section className="py-32 md:py-40 px-6" style={{ borderBottom: "1px solid var(--border)" }}>
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="label-rule mb-5 max-w-xs mx-auto">
-              <span className="label">Our Portfolio</span>
+      {/* ── Our Services ─────────────────────────────── */}
+      <section style={{ background: "var(--background)", borderBottom: "1px solid var(--border)" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto", padding: "5rem 2.5rem" }}>
+          {/* Header */}
+          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: "2rem" }}>
+            <div>
+              <div className="label" style={{ marginBottom: "0.4rem" }}>What We Do</div>
+              <h2 className="serif" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 400 }}>Our Services</h2>
             </div>
-            <h2 className="serif" style={{ fontSize: "clamp(2rem, 4vw, 2.8rem)", fontWeight: 400 }}>
-              Three Brands. One Vision.
-            </h2>
-            <p className="mt-4 mx-auto" style={{ maxWidth: 480, color: "var(--muted-foreground)" }}>
-              Each brand is purpose-built to solve a distinct challenge — together
-              they form a comprehensive corporate solutions group.
-            </p>
+            <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem", color: "var(--accent)", fontWeight: 700, fontSize: "0.875rem", textDecoration: "none", letterSpacing: "0.02em" }}>
+              Get in touch <ArrowRight size={14} />
+            </Link>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {brands.map((b, i) => (
-              <a
-                key={b.name}
-                href={b.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="card card-accent-top p-8 block"
-                style={{ animationDelay: `${i * 100}ms`, textDecoration: "none" }}
+          {/* Image card grid — 3 top + 2 bottom */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: 14 }}>
+            {services.map((s, idx) => (
+              <div
+                key={s.title}
+                className="group"
+                style={{
+                  position: "relative",
+                  height: idx < 3 ? 460 : 400,
+                  borderRadius: 14,
+                  overflow: "hidden",
+                  cursor: "pointer",
+                  background: "#111",
+                  gridColumn: idx < 3 ? "span 2" : "span 3",
+                }}
               >
-                {/* Logo or name */}
-                <div className="mb-5 h-14 flex items-center">
-                  {b.logo ? (
-                    <Image
-                      src={b.logo}
-                      alt={b.name}
-                      width={160}
-                      height={56}
-                      style={{ height: 48, width: "auto", objectFit: "contain", objectPosition: "left" }}
-                    />
-                  ) : (
-                    <span className="serif font-semibold" style={{ fontSize: "1.15rem", color: "var(--foreground)" }}>
-                      {b.name}
-                    </span>
-                  )}
+                <Image
+                  src={s.image} alt={s.title} fill
+                  style={{ objectFit: "cover", transition: "transform 600ms ease-out", opacity: 0.82 }}
+                  className="group-hover:scale-105"
+                />
+                {/* Gradient — tall enough for title + desc */}
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.35) 45%, transparent 100%)" }} />
+                {/* Text */}
+                <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "2rem 1.75rem" }}>
+                  <div style={{ color: "var(--accent)", fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "0.5rem" }}>
+                    Service
+                  </div>
+                  <div style={{ color: "white", fontWeight: 700, fontSize: "1.1rem", lineHeight: 1.3, marginBottom: "0.75rem" }}>
+                    {s.title}
+                  </div>
+                  <p style={{ color: "rgba(255,255,255,0.72)", fontSize: "0.85rem", lineHeight: 1.7, maxWidth: 340 }}>
+                    {s.desc}
+                  </p>
                 </div>
-                <div className="label mb-3" style={{ color: "var(--muted-foreground)" }}>{b.year}</div>
-                <p className="mb-4" style={{ fontSize: "0.8rem", color: "var(--accent)", letterSpacing: "0.06em", fontStyle: "italic" }}>
-                  {b.tagline}
-                </p>
-                <hr className="rule mb-4" />
-                <p style={{ fontSize: "0.9rem", lineHeight: 1.7, color: "var(--muted-foreground)" }}>
-                  {b.description}
-                </p>
-                <div className="mt-5 flex items-center gap-1" style={{ fontSize: "0.75rem", color: "var(--accent)" }}>
-                  <span>Visit site</span>
-                  <ExternalLink size={11} />
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Services ─────────────────────────────────── */}
-      <section
-        className="py-32 md:py-40 px-6"
-        style={{ background: "var(--muted)", borderBottom: "1px solid var(--border)" }}
-      >
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="label-rule mb-5 max-w-xs mx-auto">
-              <span className="label">What We Do</span>
-            </div>
-            <h2 className="serif" style={{ fontSize: "clamp(2rem, 4vw, 2.8rem)", fontWeight: 400 }}>
-              Our Services
-            </h2>
-          </div>
-
-          <div className="grid sm:grid-cols-2 gap-6">
-            {services.map((s) => (
-              <div key={s.title} className="card p-8">
-                <h4
-                  className="serif mb-3"
-                  style={{ fontSize: "1.1rem", fontWeight: 600, color: "var(--foreground)" }}
-                >
-                  {s.title}
-                </h4>
-                <hr className="rule mb-3" />
-                <p style={{ fontSize: "0.9rem", lineHeight: 1.7, color: "var(--muted-foreground)" }}>
-                  {s.desc}
-                </p>
               </div>
             ))}
           </div>
@@ -249,20 +304,16 @@ export default function Home() {
       </section>
 
       {/* ── CTA ──────────────────────────────────────── */}
-      <section className="py-32 md:py-40 px-6">
+      <section className="py-28 md:py-36 px-6">
         <div className="max-w-2xl mx-auto text-center">
           <div className="label-rule mb-8 max-w-xs mx-auto">
             <span className="label">Ready to Start?</span>
           </div>
-          <h2
-            className="serif mb-6"
-            style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 400, fontStyle: "italic" }}
-          >
+          <h2 className="serif mb-6" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 400, fontStyle: "italic" }}>
             Let&apos;s Work Together
           </h2>
-          <p className="mb-10" style={{ color: "var(--muted-foreground)", maxWidth: 400, margin: "0 auto 2.5rem" }}>
-            Whether you&apos;re an expat looking to settle in India or a corporate seeking
-            scalable HR and mobility solutions — we&apos;re here to help.
+          <p style={{ color: "var(--muted-foreground)", maxWidth: 400, margin: "0 auto 2.5rem", lineHeight: 1.8 }}>
+            Whether you&apos;re an expat looking to settle in India or a corporate seeking scalable HR and mobility solutions — we&apos;re here to help.
           </p>
           <Link href="/contact" className="btn-primary">
             Get in Touch <ArrowRight size={15} />
