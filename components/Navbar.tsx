@@ -6,13 +6,9 @@ import { Menu, X } from "lucide-react";
 import Image from "next/image";
 
 const links = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About Us" },
-  { href: "/history", label: "Our History" },
-  { href: "/team", label: "Meet the Team" },
-  { href: "/clients", label: "Our Clients" },
+  { href: "/journey", label: "Our Journey" },
+  { href: "/clients", label: "Our Business Partners" },
   { href: "/certifications", label: "Certifications" },
-  { href: "/contact", label: "Contact" },
 ];
 
 export default function Navbar() {
@@ -26,8 +22,8 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const isHome = pathname === "/";
-  const transparent = isHome && !scrolled;
+  const transparentPages = ["/", "/journey"];
+  const transparent = transparentPages.includes(pathname) && !scrolled;
 
   return (
     <header
@@ -35,7 +31,7 @@ export default function Navbar() {
       style={{
         animation: "fadeDown 0.8s ease-out",
         background: transparent
-          ? "linear-gradient(to bottom, rgba(226,151,51,0.30) 0%, rgba(226,151,51,0.08) 70%, transparent 100%)"
+          ? "linear-gradient(to bottom, rgba(193,68,12,0.30) 0%, rgba(193,68,12,0.08) 70%, transparent 100%)"
           : "rgba(250,250,248,0.94)",
         backdropFilter: transparent ? "none" : "blur(24px)",
         borderBottom: transparent ? "none" : "1px solid rgba(232,228,223,0.8)",
@@ -55,7 +51,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-12">
           {links.map((l) => (
             <Link
               key={l.href}
@@ -66,7 +62,7 @@ export default function Navbar() {
                 fontWeight: 800,
                 letterSpacing: "0.05em",
                 textDecoration: "none",
-                color: pathname === l.href ? "#E29733" : "#000000",
+                color: pathname === l.href ? "#C1440C" : "#000000",
                 transition: "color 200ms ease-out",
               }}
             >

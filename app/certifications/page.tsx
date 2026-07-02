@@ -1,10 +1,16 @@
-import { Award, ShieldCheck, ImageIcon } from "lucide-react";
+import Image from "next/image";
+import { ShieldCheck } from "lucide-react";
 
-const certTypes = [
-  { label: "ISO Certifications" },
-  { label: "Government Approvals" },
-  { label: "Industry Memberships" },
-  { label: "Partner Accreditations" },
+const certificates = [
+  { name: "EURA Full Member", category: "Partner Accreditation", logo: "/certificate/eura.png" },
+  { name: "ISO 9001:2015", category: "Quality Management", logo: "/certificate/ISO-9001.webp" },
+  { name: "ISO 27001:2013", category: "Information Security", logo: "/certificate/ISO-27001.webp" },
+  { name: "ISO 14001:2015", category: "Environmental Management", logo: "/certificate/iso14001.png" },
+  { name: "Certification Body Accreditation", category: "Government Approval", logo: "/certificate/registrar.png" },
+  { name: "OTOAI Member", category: "Industry Membership", logo: "/certificate/OTOAI-300x218.webp" },
+  { name: "IATO Member", category: "Industry Membership", logo: "/certificate/iato.png" },
+  { name: "ETAA Member", category: "Industry Membership", logo: "/certificate/etaa.png" },
+  { name: "Member of JCCI", category: "Industry Membership", logo: "/certificate/jcci.png" },
 ];
 
 const trustPoints = [
@@ -27,10 +33,7 @@ export default function CertificationsPage() {
     <div style={{ position: "relative", zIndex: 1 }}>
 
       {/* ── Hero ── */}
-      <section
-        className="py-32 md:py-40 px-6 text-center"
-        style={{ borderBottom: "1px solid var(--border)" }}
-      >
+      <section className="pt-20 pb-10 md:pt-24 md:pb-12 px-6 text-center">
         <div className="max-w-3xl mx-auto">
           <div className="label-rule mb-6 max-w-xs mx-auto">
             <span className="label">Trust &amp; Compliance</span>
@@ -48,66 +51,70 @@ export default function CertificationsPage() {
         </div>
       </section>
 
-      {/* ── Type Summary ── */}
-      <section
-        className="py-16 px-6"
-        style={{ background: "var(--card)", borderBottom: "1px solid var(--border)" }}
-      >
-        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-px" style={{ background: "var(--border)", border: "1px solid var(--border)", borderRadius: 8, overflow: "hidden" }}>
-          {certTypes.map((c) => (
-            <div key={c.label} className="py-10 px-6 text-center" style={{ background: "var(--card)" }}>
-              <ShieldCheck size={20} className="mx-auto mb-3" style={{ color: "var(--accent)" }} />
-              <p className="serif" style={{ fontSize: "0.9rem", fontWeight: 600, color: "var(--foreground)" }}>{c.label}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* ── Certificate Gallery ── */}
-      <section className="py-28 px-6" style={{ borderBottom: "1px solid var(--border)" }}>
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-14">
-            <div className="label-rule mb-5 max-w-xs mx-auto">
-              <span className="label">Certificate Gallery</span>
-            </div>
-            <h2 className="serif" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 400 }}>
-              Verified Credentials
-            </h2>
-            <p className="mt-3" style={{ fontSize: "0.9rem", color: "var(--muted-foreground)" }}>
-              Demonstrating our quality and compliance standards.
-            </p>
+      <section className="pt-4 pb-16 px-6" style={{ borderBottom: "1px solid var(--border)" }}>
+        <div className="max-w-7xl mx-auto">
+
+          {/* Desktop — staggered rows: 5 then 4, offset */}
+          <div className="hidden md:flex flex-col gap-6">
+            {(() => {
+              const rowSizes = [5, 4];
+              let start = 0;
+              return rowSizes.map((size, ri) => {
+                const row = certificates.slice(start, start + size);
+                start += size;
+                return (
+                  <div key={ri} className="flex gap-6" style={{ marginLeft: ri % 2 === 1 ? 123 : 0 }}>
+                    {row.map((c) => (
+                      <div key={c.name} className="card shrink-0" style={{ width: 221, aspectRatio: "3/4", overflow: "hidden", display: "flex", flexDirection: "column" }}>
+                        {/* Image area */}
+                        <div
+                          className="flex-1 flex items-center justify-center p-3 relative"
+                          style={{ background: "var(--muted)", borderBottom: "1px solid var(--border)" }}
+                        >
+                          <Image
+                            src={c.logo}
+                            alt={c.name}
+                            fill
+                            style={{ objectFit: "contain" }}
+                          />
+                        </div>
+                        {/* Label area */}
+                        <div className="px-4 pt-2 pb-4">
+                          <div style={{ fontSize: "0.9rem", fontWeight: 600, color: "var(--foreground)", marginBottom: 4 }}>{c.name}</div>
+                          <div className="label" style={{ fontSize: "0.65rem", color: "var(--accent)" }}>{c.category}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                );
+              });
+            })()}
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {Array.from({ length: 8 }).map((_, i) => (
-              <div key={i} className="card" style={{ aspectRatio: "3/4", overflow: "hidden", display: "flex", flexDirection: "column" }}>
+          {/* Mobile — simple grid, no offset */}
+          <div className="grid grid-cols-2 gap-6 md:hidden">
+            {certificates.map((c) => (
+              <div key={c.name} className="card" style={{ aspectRatio: "3/4", overflow: "hidden", display: "flex", flexDirection: "column" }}>
                 {/* Image area */}
                 <div
-                  className="flex-1 flex flex-col items-center justify-center gap-2"
+                  className="flex-1 flex items-center justify-center p-3 relative"
                   style={{ background: "var(--muted)", borderBottom: "1px solid var(--border)" }}
                 >
-                  <ImageIcon size={24} style={{ color: "var(--border-hover)" }} />
-                  <span style={{ fontSize: "0.7rem", color: "var(--border-hover)", letterSpacing: "0.06em" }}>
-                    Certificate
-                  </span>
+                  <Image
+                    src={c.logo}
+                    alt={c.name}
+                    fill
+                    style={{ objectFit: "contain" }}
+                  />
                 </div>
                 {/* Label area */}
-                <div className="p-4">
-                  <div style={{ height: 9, borderRadius: 3, background: "var(--muted)", width: "80%", marginBottom: 7 }} />
-                  <div style={{ height: 7, borderRadius: 3, background: "var(--muted)", width: "50%" }} />
+                <div className="px-4 pt-2 pb-4">
+                  <div style={{ fontSize: "0.9rem", fontWeight: 600, color: "var(--foreground)", marginBottom: 4 }}>{c.name}</div>
+                  <div className="label" style={{ fontSize: "0.65rem", color: "var(--accent)" }}>{c.category}</div>
                 </div>
               </div>
             ))}
-          </div>
-
-          <div className="placeholder-block p-12 mt-8 text-center">
-            <Award size={24} style={{ color: "var(--border-hover)" }} />
-            <p className="serif mt-3" style={{ fontSize: "0.95rem", fontStyle: "italic", color: "var(--muted-foreground)" }}>
-              Upload certificate images to populate this gallery
-            </p>
-            <p style={{ fontSize: "0.8rem", color: "var(--border-hover)", marginTop: 6, maxWidth: 380 }}>
-              ISO, government approvals, industry memberships, partner accreditations — each card shows the image, title, and issue date.
-            </p>
           </div>
         </div>
       </section>

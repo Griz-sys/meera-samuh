@@ -1,0 +1,32 @@
+export const teamMembers = [
+  {
+    slug: "gaurav-manav",
+    name: "Gaurav Manav",
+    role: "Co-Founder & CEO",
+    photo: "/team-gaurav.jfif",
+    initials: "GM",
+    linkedin: "https://www.linkedin.com/in/gaurav-manav-meerasamuh/",
+    bio: "Visionary leader driving Meera Samuh's growth across global mobility, HR, and corporate services. With over 16 years of industry experience, Gaurav has built a group trusted by corporates and expats across 50+ countries.",
+    extended: "Under Gaurav's leadership, Meera Samuh has expanded from a single-service firm into a multi-brand group encompassing relocation, fleet management, manpower solutions, and corporate consulting. His deep understanding of the challenges faced by foreign nationals in India has been the compass for every service the group offers.",
+  },
+  {
+    slug: "arokia-manav",
+    name: "Arokia Manav",
+    role: "Co-Founder & MD",
+    photo: "/team-arokia.jfif",
+    initials: "AM",
+    linkedin: "https://www.linkedin.com/in/arokia-manav-552b45190/",
+    bio: "Instrumental in shaping the strategic direction and operational backbone of Meera Samuh. Arokia brings deep expertise in business development and cross-border corporate solutions to every client engagement.",
+    extended: "Arokia co-founded Meera Samuh with a clear mission: to make India accessible for global talent and businesses. His hands-on approach to building client relationships and his sharp eye for operational efficiency have been central to the group's sustained growth and reputation across industries.",
+  },
+  {
+    slug: "sushma-singh",
+    name: "Sushma Singh",
+    role: "COO",
+    photo: "/team-sushma.jfif",
+    initials: "SS",
+    linkedin: "https://www.linkedin.com/in/sushma-singh-83750b1a9/",
+    bio: "The operational force behind Meera Samuh's seamless service delivery. Sushma oversees day-to-day operations across all three brands, ensuring every client experience meets the group's high standards of excellence.",
+    extended: "Sushma brings a meticulous, people-first approach to operations. Her focus on process excellence and team development has helped Meera Samuh scale without compromising on service quality. She serves as the connective tissue across all three brands, keeping teams aligned and clients delighted.",
+  },
+];

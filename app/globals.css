@@ -7,12 +7,12 @@
   --foreground:        #1A1A1A;
   --muted:             #F5F3F0;
   --muted-foreground:  #6B6B6B;
-  --accent:            #E29733;
-  --accent-secondary:  #EBA94D;
+  --accent:            #C1440C;
+  --accent-secondary:  #D9591A;
   --border:            #E8E4DF;
   --border-hover:      #C8C4BF;
   --card:              #FFFFFF;
-  --ring:              #B8860B;
+  --ring:              #8A3208;
 }
 
 @theme inline {
@@ -170,7 +170,7 @@ h1, h2, h3, h4 {
 }
 .btn-primary:hover {
   background-color: var(--accent-secondary);
-  box-shadow: 0 4px 12px rgba(184,134,11,0.25);
+  box-shadow: 0 4px 12px rgba(138,50,8,0.3);
 }
 
 /* Outline button */
@@ -264,7 +264,7 @@ textarea {
 input:hover, textarea:hover { border-color: var(--border-hover); }
 input:focus, textarea:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 2px rgba(184,134,11,0.15);
+  box-shadow: 0 0 0 2px rgba(138,50,8,0.18);
 }
 input::placeholder, textarea::placeholder {
   color: var(--muted-foreground);

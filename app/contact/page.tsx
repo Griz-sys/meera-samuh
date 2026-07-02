@@ -28,30 +28,8 @@ export default function ContactPage() {
   return (
     <div style={{ position: "relative", zIndex: 1 }}>
 
-      {/* ── Hero ── */}
-      <section
-        className="py-32 md:py-40 px-6 text-center"
-        style={{ borderBottom: "1px solid var(--border)" }}
-      >
-        <div className="max-w-3xl mx-auto">
-          <div className="label-rule mb-6 max-w-xs mx-auto">
-            <span className="label">We&apos;d Love to Hear From You</span>
-          </div>
-          <h1
-            className="serif mb-6"
-            style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 400, lineHeight: 1.1, letterSpacing: "-0.02em" }}
-          >
-            Get in <span style={{ fontStyle: "italic", color: "var(--accent)" }}>Touch</span>
-          </h1>
-          <p style={{ fontSize: "1.1rem", color: "var(--muted-foreground)", lineHeight: 1.75, maxWidth: 440, margin: "0 auto" }}>
-            Whether you have a question about our services, want to partner with us,
-            or simply need guidance — our team is ready to help.
-          </p>
-        </div>
-      </section>
-
       {/* ── Form + Info ── */}
-      <section className="py-24 px-6">
+      <section className="pt-32 md:pt-40 pb-24 px-6">
         <div className="max-w-5xl mx-auto grid lg:grid-cols-5 gap-16">
 
           {/* Left: info */}

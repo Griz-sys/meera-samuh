@@ -3,11 +3,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, ExternalLink } from "lucide-react";
+import { teamMembers } from "@/lib/team-data";
 
 const stats = [
   { value: "16+", label: "Years of Experience" },
   { value: "50+", label: "Countries Served" },
-  { value: "3",   label: "Business Verticals" },
   { value: "500+",label: "Corporate Clients" },
 ];
 
@@ -95,8 +95,8 @@ export default function Home() {
             <div style={{ marginBottom: "1.5rem" }}>
               <span style={{
                 display: "inline-block", padding: "7px 18px",
-                background: "rgba(226,151,51,0.18)", border: "1px solid rgba(226,151,51,0.4)",
-                borderRadius: 999, color: "#E29733", fontSize: "0.72rem", fontWeight: 700,
+                background: "rgba(255,122,51,0.20)", border: "1px solid rgba(255,122,51,0.5)",
+                borderRadius: 999, color: "#FF8A45", fontSize: "0.72rem", fontWeight: 700,
                 letterSpacing: "0.13em", textTransform: "uppercase",
               }}>
                 Since 2008 · 50+ Countries
@@ -105,9 +105,24 @@ export default function Home() {
             <h1 className="serif" style={{
               fontSize: "clamp(3rem, 7vw, 5rem)", fontWeight: 700, lineHeight: 1.05,
               letterSpacing: "-0.02em", color: "white", textShadow: "0 2px 20px rgba(0,0,0,0.4)", maxWidth: 520,
+              marginBottom: "2.5rem",
             }}>
               We Help You<br />Grow Better
             </h1>
+
+            {/* Stats */}
+            <div style={{ display: "flex", gap: "2.5rem", flexWrap: "wrap" }}>
+              {stats.map((s) => (
+                <div key={s.label}>
+                  <div className="serif" style={{ fontSize: "2rem", fontWeight: 700, color: "white", lineHeight: 1 }}>
+                    {s.value}
+                  </div>
+                  <div style={{ fontSize: "0.7rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.55)", marginTop: "0.3rem" }}>
+                    {s.label}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Right — description + CTA */}
@@ -116,7 +131,7 @@ export default function Home() {
               End-to-end Global Mobility, HR, and Business Solutions for corporates and expats — delivered by a group trusted across more than 50 countries.
             </p>
             <Link
-              href="/about"
+              href="/journey"
               style={{
                 display: "inline-flex", alignItems: "center", gap: "0.5rem",
                 padding: "13px 28px", background: "rgba(255,255,255,0.15)",
@@ -232,24 +247,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Stats strip ──────────────────────────────── */}
-      <section style={{ background: "var(--card)", borderBottom: "1px solid var(--border)", borderTop: "1px solid var(--border)" }}>
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4">
-            {stats.map((s, i) => (
-              <div key={s.label} className="py-10 px-6 text-center" style={{ borderRight: i < stats.length - 1 ? "1px solid var(--border)" : "none" }}>
-                <div className="serif mb-1" style={{ fontSize: "2.6rem", fontWeight: 400, color: "var(--accent)", lineHeight: 1, fontStyle: "italic" }}>
-                  {s.value}
-                </div>
-                <div className="label" style={{ color: "var(--muted-foreground)" }}>{s.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ── Our Services ─────────────────────────────── */}
-      <section style={{ background: "var(--background)", borderBottom: "1px solid var(--border)" }}>
+      <section
+        style={{
+          background: "linear-gradient(180deg, #FFF6EC 0%, #FDECD9 100%)",
+          borderBottom: "1px solid var(--border)",
+        }}
+      >
         <div style={{ maxWidth: 1400, margin: "0 auto", padding: "5rem 2.5rem" }}>
           {/* Header */}
           <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: "2rem" }}>
@@ -303,9 +307,66 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── Leadership ───────────────────────────────── */}
+      <section style={{ borderBottom: "1px solid var(--border)", background: "var(--card)" }}>
+        <div style={{ maxWidth: 1400, margin: "0 auto", padding: "5rem 2.5rem" }}>
+          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: "2.5rem" }}>
+            <div>
+              <div className="label" style={{ marginBottom: "0.4rem" }}>The People Behind the Brand</div>
+              <h2 className="serif" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 400 }}>Leadership</h2>
+            </div>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
+            {teamMembers.map((m) => (
+              <Link
+                key={m.slug}
+                href={`/team/${m.slug}`}
+                className="group"
+                style={{ textDecoration: "none", display: "block", border: "1px solid var(--border)", borderRadius: 14, overflow: "hidden", background: "var(--background)", transition: "box-shadow 300ms ease-out, border-color 300ms ease-out" }}
+              >
+                {/* Photo */}
+                <div style={{ position: "relative", width: "100%", aspectRatio: "1/1", background: "var(--muted)", overflow: "hidden" }}>
+                  {/* Initials behind photo */}
+                  <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", zIndex: 0, background: "linear-gradient(135deg, #f5f0e8, #ede8df)" }}>
+                    <span className="serif" style={{ fontSize: "3.5rem", fontWeight: 400, color: "var(--accent)", fontStyle: "italic", opacity: 0.4 }}>{m.initials}</span>
+                  </div>
+                  <Image
+                    src={m.photo}
+                    alt={m.name}
+                    fill
+                    unoptimized
+                    style={{ objectFit: "cover", objectPosition: "center top", transition: "transform 500ms ease-out", zIndex: 1 }}
+                    className="group-hover:scale-105"
+                  />
+                </div>
+
+                {/* Info */}
+                <div style={{ padding: "1.25rem 1.5rem 1.5rem", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                  <div>
+                    <div style={{ fontWeight: 700, fontSize: "1rem", color: "var(--foreground)", marginBottom: "0.2rem" }}>{m.name}</div>
+                    <div className="label" style={{ color: "var(--accent)", fontSize: "0.65rem" }}>{m.role}</div>
+                  </div>
+                  <ArrowRight size={16} style={{ color: "var(--muted-foreground)", flexShrink: 0 }} />
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── CTA ──────────────────────────────────────── */}
-      <section className="py-28 md:py-36 px-6">
-        <div className="max-w-2xl mx-auto text-center">
+      <section
+        className="py-14 md:py-16 px-6 text-center"
+        style={{
+          background: "#B8591E",
+          ["--foreground" as string]: "#ffffff",
+          ["--muted-foreground" as string]: "rgba(255,255,255,0.75)",
+          ["--accent" as string]: "#ffffff",
+          ["--border" as string]: "rgba(255,255,255,0.15)",
+        }}
+      >
+        <div className="max-w-2xl mx-auto">
           <div className="label-rule mb-8 max-w-xs mx-auto">
             <span className="label">Ready to Start?</span>
           </div>
@@ -315,7 +376,13 @@ export default function Home() {
           <p style={{ color: "var(--muted-foreground)", maxWidth: 400, margin: "0 auto 2.5rem", lineHeight: 1.8 }}>
             Whether you&apos;re an expat looking to settle in India or a corporate seeking scalable HR and mobility solutions — we&apos;re here to help.
           </p>
-          <Link href="/contact" className="btn-primary">
+          <Link
+            href="/contact"
+            className="btn-primary"
+            style={{ background: "#ffffff", color: "#B8591E" }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "#FFE9D2"; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "#ffffff"; }}
+          >
             Get in Touch <ArrowRight size={15} />
           </Link>
         </div>
